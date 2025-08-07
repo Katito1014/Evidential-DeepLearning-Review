@@ -67,13 +67,14 @@
         <br>
         * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
 
+        <br>
         
-        
-        The picture below shows an example of Dirichlet distribution. It's composed of concentration parameter ($\alpha$), and subjective opinion. Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF.
+         *The picture below shows an example of Dirichlet distribution.<br> It's composed of concentration parameter ($\alpha$), and subjective opinion. <br> Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF.* <br>
+
         ![Heatmap explanation](image1.jpg)
         <br>
 
-        The other picture below shows examples of various distributions with different parameters, belif, uncertainty.
+        *The other picture below shows examples of various distributions with different parameters, belif, uncertainty.*
         ![Heatmap Examples](image2.png)
 
 * ## Other Uncertainty Reasoning Frameworks
@@ -94,7 +95,7 @@
         <br>In case of **SL**, base rate *a* is set to one value and probability is calculated as one value. 
         <br>In case of **IDM**, the probability is calcualted as range by set base rate *a* from minimum (0) to maximum (1).
 
-    * ###    
+
 
     
 
