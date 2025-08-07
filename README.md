@@ -65,9 +65,9 @@
     *   **Quenstion** :    
         * First-order uncertainty : The probability that we are familiar with. $p(rain)$ = 0.7 
         <br>
-        * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
+        *  Second-order uncertainty : Model probability with PDF expressing uncertainty. 
         
-        ![Heat map explanation](image 1.jpg)
+        ![Heat map explanation](image1.jpg)
     
 
 
