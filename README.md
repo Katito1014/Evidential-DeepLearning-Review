@@ -2,9 +2,9 @@
 
 
 
- * ### Common Terms of Uncertainty Categories
+ * ## Common Terms of Uncertainty Categories
 
-    * #### Epistemic Uncertainties
+    * ### Epistemic Uncertainties
 
         Epistemic uncertainty is also known as model uncertainty, which stems from insufficient knowledge or limited data.
 
@@ -12,20 +12,20 @@
 
         Epistemic uncertainty can be reduced by gathering more data, enhancing the model.
 
-    * #### Aleatoric Uncertainty
+    * ### Aleatoric Uncertainty
 
         Aleatoric uncertainty or data uncertainty is inherent to the nature of the training data itself.
 
         Aleatoric uncertainty requires more careful consideration of data's inherent properties to reduce.
 
-    * #### Vacuity and Dissonance
+    * ### Vacuity and Dissonance
 
         Vacuity is uncertainty arising from a lack of information, often same with epistmeic uncertainty.
     
         Dissonance is uncertainty occured when a model gives inconsistent predictions based on different parts or features of a particular sample.
 
-* ### Theoretical Foundations of EDL
-    * #### Introduction of Subjective Logic (SL)
+* ## Theoretical Foundations of EDL
+    * ###  Introduction of Subjective Logic (SL)  
         
         We are familiar with the probabilistic logic that can take a probability value in the range [0,1], reflecting a degree of subjectivity by allowing the argument to be partially true.
 
@@ -65,9 +65,37 @@
     *   **Quenstion** :    
         * First-order uncertainty : The probability that we are familiar with. $p(rain)$ = 0.7 
         <br>
-        *  Second-order uncertainty : Model probability with PDF expressing uncertainty. 
+        * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
+
         
-        ![Heat map explanation](image1.jpg)
+        
+        The picture below shows an example of Dirichlet distribution. It's composed of concentration parameter ($\alpha$), and subjective opinion. Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF.
+        ![Heatmap explanation](image1.jpg)
+        <br>
+
+        The other picture below shows examples of various distributions with different parameters, belif, uncertainty.
+        ![Heatmap Examples](image2.png)
+
+* ## Other Uncertainty Reasoning Frameworks
+
+    * ### Comparison with Dempster-Shafer Theory (DST)
+        
+        DST has been important tool for shaping SL by challenging the tradition additivity principle of probability theory.
+        
+        Specificaly, DST allows the sum of probabilities for all mutually exclusive events to be less than one. 
+        
+        It allows SL, DST to express uncertainty about probability explicitly by allocating belief mass to entire domain.
+
+        **The difference between SL and DST** is that **SL** has  a **flexible prior ditribution** that **allocates uncertatinty to each class** but DST doesnt have.
+    
+    * ### Comparison with Imprecise Dirichlet Model (IDM)
+
+        The main difference between IDM and SL is base rate. 
+        <br>In case of **SL**, base rate *a* is set to one value and probability is calculated as one value. 
+        <br>In case of **IDM**, the probability is calcualted as range by set base rate *a* from minimum (0) to maximum (1).
+
+    * ###    
+
     
 
 
