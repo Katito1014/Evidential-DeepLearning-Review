@@ -53,10 +53,21 @@
 
         **Interpretation**: Model got belief *b* from data, and it had prior *a* which means probability that certain label could happen, when it has high prior, the more probability is assigned by multiplication with uncertainty *u*.
         
-          
-        
-        
+        <br>
 
+        With above definition, SL theory identifies a **bijection** between a multinomial opinion and a Dirichlet probability density function (PDF).
+
+        Then, given the base rate *a*, there exists a **bijection** F between opinion $\tau$ and the Dirichelt PDF Dir(*p*,$\alpha$), where $\alpha$ satisfies $\alpha_i$ = $b_iW/u + a_iW$, W is positive prior weight.         
+        
+        **Interpretation** : If opinion $\tau$ is known (*a*, *b*, *u* are known), then $\alpha$ is assigned to only one value by bijection F and vice verca is same.
+
+        This relationship came from the interpretation of second-order uncertainty thorough probability density(Dirichlet Distribution) and is crucial because it faciliates calculus reasoning using PDFs.   
+    *   **Quenstion** :    
+        * First-order uncertainty : The probability that we are familiar with. $p(rain)$ = 0.7 
+        <br>
+        * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
+        
+        ![Heat map explanation](image 1.jpg)
     
 
 
