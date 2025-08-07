@@ -31,7 +31,7 @@
 
         Subjective Logic extends this by including not only belief and disbelief (probability) but also uncertainty.
 
-        For example, given a categorical random variable X in domain **X**, subjective opinion in SL can be formalized as an ordered triplet $\tau$ = (*b*,*u*,*a*), where *b* is belief mass, *u* is uncertainty mass, *a* is base rate.
+        For example, given a categorical random variable X in domain **X**, subjective opinion in SL can be formalized as an ordered triplet **$\tau$** = (*b*,*u*,*a*), where *b* is belief mass, *u* is uncertainty mass, *a* is base rate.
 
         <br>
 
