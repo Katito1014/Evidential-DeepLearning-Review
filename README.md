@@ -1,7 +1,7 @@
 # Evidential-DeepLearning-Review
 
-
-
+* This study is written referring to  [*A Comprehensive Survey on Evidential Deep
+ Learning and Its Applications*](https://arxiv.org/abs/2409.04720)
  * ## Common Terms of Uncertainty Categories
 
     * ### Epistemic Uncertainties
@@ -64,17 +64,16 @@
         This relationship came from the interpretation of second-order uncertainty thorough probability density(Dirichlet Distribution) and is crucial because it faciliates calculus reasoning using PDFs.   
     *   **Quenstion** :    
         * First-order uncertainty : The probability that we are familiar with. $p(rain)$ = 0.7 
-        <br>
         * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
 
         <br>
         
-         *The picture below shows an example of Dirichlet distribution.<br> It's composed of concentration parameter ($\alpha$), and subjective opinion. <br> Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF.* <br>
+         The picture below shows an example of Dirichlet distribution. It's composed of concentration parameter ($\alpha$), and subjective opinion. Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF. <br>
 
         ![Heatmap explanation](image1.jpg)
         <br>
-
-        *The other picture below shows examples of various distributions with different parameters, belif, uncertainty.*
+        <br>
+        The other picture below shows examples of various distributions with different parameters, belif, uncertainty.
         ![Heatmap Examples](image2.png)
 
 * ## Other Uncertainty Reasoning Frameworks
