@@ -36,21 +36,20 @@
 - WGAN and ENNs are combined for joint training.
 - New objective functions are proposed for both ENNs and WGAN, explicitly considering vacuity (unlike traditional ENNs).
 
+
 **ENN Loss:**
 > First term: traditional ENN loss; Second term: vacuity regularization
 
-$$
-\mathcal{L}(\Theta) = \mathbb{E}_{\mathbf{x},\mathbf{y}\sim P_{in}(\mathbf{x},\mathbf{y})}[\mathcal{L}(f(\mathbf{x}|\Theta),\mathbf{y})]
-- \beta\mathbb{E}_{\hat{\mathbf{x}}\sim P_{out}(\hat{\mathbf{x}})}[\mathbf{Vac}(f(\hat{\mathbf{x}}|\Theta))]
-$$
+<p align="center">
+    <img src="enn_loss.png" alt="ENN Loss" width="500"/>
+</p>
 
 **WGAN Loss:**
 > Last term encourages generator to produce OOD samples with high vacuity uncertainty
 
-$$
-\min_{G} \max_{D} \mathbb{E}_{\mathbf{x}\sim P_{in}(\mathbf{x})}[D(\mathbf{x})] - \mathbb{E}_{\hat{\mathbf{x}}\sim P_{G}(z)}[D(\hat{\mathbf{x}})]
-- \beta\mathbb{E}_{\hat{\mathbf{x}}\sim P_{G}(z)}[\mathbf{Vac}(f(\hat{\mathbf{x}}|\Theta))]
-$$
+<p align="center">
+    <img src="wgan_loss.png" alt="WGAN Loss" width="500"/>
+</p>
 
 ---
 
