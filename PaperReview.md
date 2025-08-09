@@ -1,47 +1,76 @@
-## Multidimensional Uncertainty-Aware Evidential Neural Networks
 
 
+# Multidimensional Uncertainty-Aware Evidential Neural Networks
 
-### What is new in the work?
+<p align="center"><em>This document is a review of the paper: <a href="https://arxiv.org/abs/2012.13676">https://arxiv.org/abs/2012.13676</a></em></p>
 
-- They proposed a novel uncertainty-aware evidential NN called WGAN-ENN for solving an OOD detection problem.<br>
-    
-- They combined Wasserstein Generative Adversarial Network (WGAN) with ENNs to jointly train model.
+---
 
+## 🆕 What is new in this work?
 
-* ### Why is the work important?
-    Tradition ENN has been proposed to explicitly model the uncertainty of class probabilities.
+- Proposes a novel uncertainty-aware evidential neural network (WGAN-ENN) for OOD (Out-of-Distribution) detection.
+- Combines Wasserstein Generative Adversarial Network (WGAN) with Evidential Neural Networks (ENNs) for joint training.
 
-    But, it is trained as **Black box** without considering different types of uncertainty in data and it often results in overconfidence with OOD tests.
+---
 
-* ### What is the literature gap?
-    Tradition ENN has been proposed to explicitly model the uncertainty of class probabilities.
+## ❓ Why is the work important?
 
-    But, it is trained as **Black box** without considering different types of uncertainty in data and it often results in overconfidence with OOD tests, distingushing boundary samples.
+- Demonstrates that vacuity can distinguish boundary samples from OOD samples.
+- The proposed model with vacuity regularization can generate and utilize various types of OOD samples.
+- Achieves state-of-the-art performance in both uncertainty estimation and OOD detection benchmarks.
 
-    Sensoy의 ENN은 예측 확률의 엔트로피만으로 불확실성을 측정했기 때문에, 불확실성의 원인에 대한 구분이 불가능합니다.
-    OOD 탐지에서 과신(overconfidence) 문제가 발생하며, 경계 샘플과 OOD 샘플을 구분하는 데 한계가 있습니다.
-    엔트로피(entropy)는 단순히 확률 분포의 퍼짐 정도만 측정합니다.
+---
 
-    하지만 vacuity와 dissonance는 서로 다른 원인에서 비롯된 불확실성입니다:
+## 📚 What is the literature gap?
 
-    vacuity는 증거 부족 → OOD 샘플에서 자주 발생
-    vacuity는 증거 총량이 적을 때 높게 측정됨
+- Traditional ENNs model the uncertainty of class probabilities, but are trained as a **black box** without considering different types of uncertainty in data.
+- This often results in overconfidence in OOD tests and difficulty distinguishing boundary samples.
+    - Sensoy's ENN measures uncertainty only by the entropy of predicted probabilities (due to using cross-entropy loss), so it cannot distinguish the causes of uncertainty.
+    - This leads to overconfidence in OOD detection and makes it difficult to distinguish between boundary and OOD samples.
+- Regularization methods using hand-picked auxiliary OOD samples have been proposed, but require many OOD samples.
 
-    OOD 샘플은 학습 데이터에서 본 적 없는 분포 → evidence 자체가 거의 없음
+---
 
-    따라서 vacuity는 OOD 탐지에 효과적
+## 🛠️ How is the gap filled?
 
-    dissonance는 증거 충돌 → 경계 샘플에서 자주 발생
+- WGAN and ENNs are combined for joint training.
+- New objective functions are proposed for both ENNs and WGAN, explicitly considering vacuity (unlike traditional ENNs).
 
-    따라서 엔트로피만으로는 이 둘을 구분할 수 없습니다. 기존 EDL에서 정의한 uncertainty가 entropy(확률 분포의 퍼짐 정도)로 정의된거라서 더 디테일하고 중요한 uncertainty 정도인 vacuity, dissonance 같은 척도들을 감지를 못 합니다.
+**ENN Loss:**
+> First term: traditional ENN loss; Second term: vacuity regularization
 
-    To solve this, regularization methods have been proposed to hand-pick-auxiliary OOD samples to train model. But this requires a lot of OOD samples.
+$$
+\mathcal{L}(\Theta) = \mathbb{E}_{\mathbf{x},\mathbf{y}\sim P_{in}(\mathbf{x},\mathbf{y})}[\mathcal{L}(f(\mathbf{x}|\Theta),\mathbf{y})]
+- \beta\mathbb{E}_{\hat{\mathbf{x}}\sim P_{out}(\hat{\mathbf{x}})}[\mathbf{Vac}(f(\hat{\mathbf{x}}|\Theta))]
+$$
 
-(4) how is the gap filled
+**WGAN Loss:**
+> Last term encourages generator to produce OOD samples with high vacuity uncertainty
 
-(5) what is achieved with the new method
+$$
+\min_{G} \max_{D} \mathbb{E}_{\mathbf{x}\sim P_{in}(\mathbf{x})}[D(\mathbf{x})] - \mathbb{E}_{\hat{\mathbf{x}}\sim P_{G}(z)}[D(\hat{\mathbf{x}})]
+- \beta\mathbb{E}_{\hat{\mathbf{x}}\sim P_{G}(z)}[\mathbf{Vac}(f(\hat{\mathbf{x}}|\Theta))]
+$$
 
-(6) what data are used
+---
 
-(7) what are the limitations.
+## 🏆 What is achieved with the new method?
+
+- WENN using vacuity outperforms other methods in OOD uncertainty estimation.
+
+---
+
+## 🗂️ What data are used?
+
+- Image datasets: MNIST, CIFAR, notMNIST, etc.
+
+---
+
+## ⚠️ What are the limitations?
+
+- The proposed loss explicitly considers vacuity, but not dissonance.
+- Experiments show WENN outputs good dissonance, but it is unclear how much dissonance would be derived by other methods compared to WENN in this paper.
+
+<div align="center">
+    <sub>Made with ❤️ by Katito1014 | Last updated: August 9, 2025</sub>
+</div>
