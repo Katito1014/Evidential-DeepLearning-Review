@@ -1,98 +1,94 @@
-# Evidential-DeepLearning-Review
 
-* This study is written referring to  [*A Comprehensive Survey on Evidential Deep
- Learning and Its Applications*](https://arxiv.org/abs/2409.04720)
- * ## Common Terms of Uncertainty Categories
+<div align="center">
+  
+    <img src="image2.png" width="200"/>
+  
+    <h1>Evidential Deep Learning Review</h1>
+    <p><em>Comprehensive summary and notes based on <a href="https://arxiv.org/abs/2409.04720">A Comprehensive Survey on Evidential Deep Learning and Its Applications</a></em></p>
+</div>
 
-    * ### Epistemic Uncertainties
+---
 
-        Epistemic uncertainty is also known as model uncertainty, which stems from insufficient knowledge or limited data.
+## 📚 Common Terms of Uncertainty Categories
 
-        High epistemic uncertainty means model doesn't possess enough information to make a reliable prediction for a given sample.
 
-        Epistemic uncertainty can be reduced by gathering more data, enhancing the model.
+### 🧠 Epistemic Uncertainties
+> *Epistemic uncertainty* (model uncertainty) stems from insufficient knowledge or limited data. High epistemic uncertainty means the model lacks enough information to make a reliable prediction. It can be reduced by gathering more data or improving the model.
 
-    * ### Aleatoric Uncertainty
+### 🎲 Aleatoric Uncertainty
+> *Aleatoric uncertainty* (data uncertainty) is inherent to the nature of the data itself, such as statistical randomness or noise. It cannot be reduced by collecting more data, only by better modeling the data's inherent properties.
 
-        Aleatoric uncertainty or data uncertainty is inherent to the nature of the training data itself.
+### 🌀 Vacuity and Dissonance
+In **Subjective Logic (SL)**:
+* **Vacuity**: Uncertainty from lack of evidence (similar to epistemic uncertainty, but not identical).
+* **Dissonance**: Uncertainty from inconsistent predictions due to insufficient evidence, leading to *inconclusiveness* in decision making.
 
-        Aleatoric uncertainty requires more careful consideration of data's inherent properties to reduce.
 
-    * ### Vacuity and Dissonance
+---
 
-        Vacuity is uncertainty arising from a lack of information, often same with epistmeic uncertainty.
-    
-        Dissonance is uncertainty occured when a model gives inconsistent predictions based on different parts or features of a particular sample.
+## 🏛️ Theoretical Foundations of EDL
 
-* ## Theoretical Foundations of EDL
-    * ###  Introduction of Subjective Logic (SL)  
-        
-        We are familiar with the probabilistic logic that can take a probability value in the range [0,1], reflecting a degree of subjectivity by allowing the argument to be partially true.
+### 🔹 Introduction to Subjective Logic (SL)
 
-        Subjective Logic extends this by including not only belief and disbelief (probability) but also uncertainty.
+Subjective Logic extends probabilistic logic by including not only belief and disbelief (probability), but also *uncertainty*.
 
-        For example, given a categorical random variable X in domain **X**, subjective opinion in SL can be formalized as an ordered triplet **$\tau$** = (*b*,*u*,*a*), where *b* is belief mass, *u* is uncertainty mass, *a* is base rate.
+* **Subjective opinion** in SL: $\tau = (b, u, a)$
+    * $b$: belief mass
+    * $u$: uncertainty mass
+    * $a$: base rate
 
-        <br>
+* **Binomial/Multinomial/Hypernomial opinions**: Depending on the domain size and how belief is distributed.
+* If all belief is assigned to singleton classes, hypernomial = multinomial opinion.
 
-        When domain **X** is binary, the opinion is a binomial opinion, or when it has more than two elements, opinion is multinomial opinion.
+**Projected probability:**
 
-        There is a generalized form of binomial / multinomial opinions. X is hypervariable that includes power set of domain **X** excluding the empty set and the set **X** itself.
-        
-        For example, the possibility that Cat or Dog will be answer is 0.7 => P(Cat,Dog) = 0.7
+$$P_i = b_i + a_i u_i$$
 
-        If all belief masses are assigned to singleton classes (P(Cat),P(Dog)) then hypernmoial opinion is same with multinomial opinion.
+> Model gets belief $b$ from data, and prior $a$ (probability of a label occurring). High prior increases probability via uncertainty $u$.
 
-        <br>  
 
-        Since uncertainty mass can be interpreted as belief mass assigned to whole domain, SL can naturally assign uncertainty mass *u* to each element according to base rate *a*.
+---
 
-        **The well defined projected probability** is defined as:
+#### 🔸 Dirichlet Distribution & Bijection
 
-        $$P_i = b_i + a_iu_i$$
+* SL theory identifies a **bijection** between a multinomial opinion and a Dirichlet PDF.
+* Given base rate $a$, there is a bijection $F$ between opinion $\tau$ and Dirichlet PDF Dir($p$, $\alpha$), where $\alpha_i = b_i W/u + a_i W$ ($W$: positive prior weight).
+* This enables calculus reasoning using PDFs and expresses **second-order uncertainty**.
 
-        **Interpretation**: Model got belief *b* from data, and it had prior *a* which means probability that certain label could happen, when it has high prior, the more probability is assigned by multiplication with uncertainty *u*.
-        
-        <br>
+**First-order uncertainty**: $p(rain) = 0.7$  
+**Second-order uncertainty**: Probability modeled as a PDF (Dirichlet) expressing uncertainty.
 
-        With above definition, SL theory identifies a **bijection** between a multinomial opinion and a Dirichlet probability density function (PDF).
+<div align="center">
+    <img src="image1.jpg" width="80%"/>
+    <br>
+    <em>Heatmap: Dirichlet distribution and subjective opinion</em>
+</div>
 
-        Then, given the base rate *a*, there exists a **bijection** F between opinion $\tau$ and the Dirichelt PDF Dir(*p*,$\alpha$), where $\alpha$ satisfies $\alpha_i$ = $b_iW/u + a_iW$, W is positive prior weight.         
-        
-        **Interpretation** : If opinion $\tau$ is known (*a*, *b*, *u* are known), then $\alpha$ is assigned to only one value by bijection F and vice verca is same.
+<div align="center">
+    <img src="image2.png" width="80%"/>
+    <em>Examples: Various distributions with different parameters, belief, uncertainty</em>
+</div>
 
-        This relationship came from the interpretation of second-order uncertainty thorough probability density(Dirichlet Distribution) and is crucial because it faciliates calculus reasoning using PDFs.   
-    *   **Quenstion** :    
-        * First-order uncertainty : The probability that we are familiar with. $p(rain)$ = 0.7 
-        * Second-order uncertainty : Model probability with PDF expressing uncertainty. 
 
-        <br>
-        
-         The picture below shows an example of Dirichlet distribution. It's composed of concentration parameter ($\alpha$), and subjective opinion. Each point within heatmap represents a specific allocation of class probabilities along its corresponding PDF. <br>
+---
 
-        ![Heatmap explanation](image1.jpg)
-        <br>
-        <br>
-        The other picture below shows examples of various distributions with different parameters, belif, uncertainty.
-        ![Heatmap Examples](image2.png)
+## 🔄 Other Uncertainty Reasoning Frameworks
 
-* ## Other Uncertainty Reasoning Frameworks
+### 📊 Dempster-Shafer Theory (DST)
+* DST challenges the additivity principle of probability theory.
+* Allows the sum of probabilities for all mutually exclusive events to be less than one.
+* Both SL and DST can allocate belief mass to the entire domain (expressing uncertainty).
+* **Key difference:** SL has a flexible prior distribution that allocates uncertainty to each class; DST does not.
 
-    * ### Comparison with Dempster-Shafer Theory (DST)
-        
-        DST has been important tool for shaping SL by challenging the tradition additivity principle of probability theory.
-        
-        Specificaly, DST allows the sum of probabilities for all mutually exclusive events to be less than one. 
-        
-        It allows SL, DST to express uncertainty about probability explicitly by allocating belief mass to entire domain.
+### 📈 Imprecise Dirichlet Model (IDM)
+* **SL:** Base rate $a$ is set to one value; probability is a single value.
+* **IDM:** Probability is a range, with base rate $a$ varying from minimum (0) to maximum (1).
 
-        **The difference between SL and DST** is that **SL** has  a **flexible prior ditribution** that **allocates uncertatinty to each class** but DST doesnt have.
-    
-    * ### Comparison with Imprecise Dirichlet Model (IDM)
+---
 
-        The main difference between IDM and SL is base rate. 
-        <br>In case of **SL**, base rate *a* is set to one value and probability is calculated as one value. 
-        <br>In case of **IDM**, the probability is calcualted as range by set base rate *a* from minimum (0) to maximum (1).
+<div align="center">
+    <sub>Made with ❤️ by Katito1014 | Last updated: August 9, 2025</sub>
+</div>
 
 
 
