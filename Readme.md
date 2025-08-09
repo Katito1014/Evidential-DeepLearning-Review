@@ -1,11 +1,11 @@
 
-<div align="center">
-  
+
+<p align="center">
     <img src="image2.png" width="200"/>
-  
-    <h1>Evidential Deep Learning Review</h1>
-    <p><em>Comprehensive summary and notes based on <a href="https://arxiv.org/abs/2409.04720">A Comprehensive Survey on Evidential Deep Learning and Its Applications</a></em></p>
-</div>
+</p>
+
+<h1 align="center">Evidential Deep Learning Review</h1>
+<p align="center"><em>Comprehensive summary and notes based on <a href="https://arxiv.org/abs/2409.04720">A Comprehensive Survey on Evidential Deep Learning and Its Applications</a></em></p>
 
 ---
 
@@ -58,16 +58,19 @@ $$P_i = b_i + a_i u_i$$
 **First-order uncertainty**: $p(rain) = 0.7$  
 **Second-order uncertainty**: Probability modeled as a PDF (Dirichlet) expressing uncertainty.
 
-<div align="center">
+
+<p align="center">
     <img src="image1.jpg" width="80%"/>
     <br>
     <em>Heatmap: Dirichlet distribution and subjective opinion</em>
-</div>
+</p>
 
-<div align="center">
+<p align="center">
     <img src="image2.png" width="80%"/>
+</p>
+<p align="center">
     <em>Examples: Various distributions with different parameters, belief, uncertainty</em>
-</div>
+</p>
 
 
 ---
