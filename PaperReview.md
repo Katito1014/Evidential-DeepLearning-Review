@@ -25,7 +25,7 @@
 
 - Traditional ENNs model the uncertainty of class probabilities, but are trained as a **black box** without considering different types of uncertainty in data.
 - This often results in overconfidence in OOD tests and difficulty distinguishing boundary samples.
-    - Sensoy's ENN measures uncertainty only by the entropy of predicted probabilities (due to using cross-entropy loss), so it cannot distinguish the causes of uncertainty.
+    - Sensoy's ENN measures uncertainty only by the entropy of predicted probabilities, so it cannot distinguish the causes of uncertainty.
     - This leads to overconfidence in OOD detection and makes it difficult to distinguish between boundary and OOD samples.
 - Regularization methods using hand-picked auxiliary OOD samples have been proposed, but require many OOD samples.
 
